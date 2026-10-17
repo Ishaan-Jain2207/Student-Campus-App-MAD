@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App & General Strings -->
+    <string name="app_name">Acadia</string>
+    <string name="app_tagline">Your campus, in one place</string>
+    <string name="welcome_student">Welcome Back</string>
+
+    <!-- Navigation Titles -->
+    <string name="title_home">Home</string>
+    <string name="title_campus">Campus</string>
+    <string name="title_map">Campus Map</string>
+    <string name="title_attendance">Attendance</string>
+    <string name="title_assignments">Assignments</string>
+    <string name="title_profile">Student Profile</string>
+    <string name="title_resources">Resources</string>
+    <string name="title_events">Events</string>
+    <string name="nav_attendance">Attend</string>
+    <string name="nav_assignments">Tasks</string>
+    <string name="nav_campus">Map</string>
+    <string name="nav_profile">Profile</string>
+    <string name="title_logout">Logout</string>
+    <string name="section_account">Account</string>
+
+    <!-- Sign-In Screen -->
+    <string name="login_title">Sign In</string>
+    <string name="hint_password">Password</string>
+    <string name="button_login">Sign In</string>
+    <string name="link_forgot_password">Forgot Password?</string>
+    <string name="link_register">Don\'t have an account? Register</string>
+    <string name="error_invalid_nmims_email">Email must be a valid @nmims.in institutional address</string>
+    <string name="error_short_password">Password must be at least 8 characters</string>
+
+    <!-- Registration Screen -->
+    <string name="register_title">Student Registration</string>
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_sap_id_num">SAP ID</string>
+    <string name="hint_email">Institutional Email (@nmims.in)</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="select_dept_prompt">-- Select Department --</string>
+    <string name="select_year_prompt">-- Select Year --</string>
+    <string name="button_register">Create Account</string>
+    <string name="link_sign_in">Already have an account? Sign In</string>
+
+    <!-- Validation Errors -->
+    <string name="error_empty_name">Please enter your full name</string>
+    <string name="error_invalid_sap_id">Please enter a valid numeric SAP ID</string>
+    <string name="error_select_dept">Please select your department (STME, SOC, SOL)</string>
+    <string name="error_select_year">Please select your academic year (Year 1–5)</string>
+    <string name="error_password_mismatch">Passwords do not match</string>
+    <string name="error_login_credentials">SAP ID, email, or password does not match an Acadia account on this device</string>
+    <string name="registration_sap_id_exists">An account with this SAP ID already exists on this device</string>
+    <string name="registration_email_exists">An account with this email already exists on this device</string>
+    <string name="registration_local_success">Account created on this device</string>
+    <string name="registration_local_error">Could not create the account. Check device storage and try again.</string>
+    <string name="password_reset_local_unavailable">This local account cannot be reset safely without verified email service. Password was not changed.</string>
+
+    <!-- Forgot Password Dialog -->
+    <string name="forgot_password_title">Reset Password</string>
+    <string name="forgot_password_desc">A secure password reset needs verified email ownership. That service is not available for device-local accounts, so SAP ID and email alone cannot reset a password.</string>
+
+    <!-- Dialogs & Buttons -->
+    <string name="logout_confirm_title">Sign Out</string>
+    <string name="logout_confirm_message">Are you sure you want to sign out of Acadia?</string>
+    <string name="action_logout">Sign Out</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_send">Check reset options</string>
+
+    <!-- Dashboard / Home Screen -->
+    <string name="heading_daily_briefing">Daily Briefing</string>
+    <string name="heading_next_up">Next Up</string>
+    <string name="heading_academic_summary">Academic Summaries</string>
+    <string name="home_events_action">Your events</string>
+    <string name="no_upcoming_task_msg">No open assignments yet. Add one to see it here.</string>
+    <string name="summary_attendance_recorded">Attendance</string>
+    <string name="summary_assignments_open">Open Assignments</string>
+    <string name="welcome_named_student">Welcome, %1$s</string>
+    <string name="assignment_due_summary">Due %1$s · %2$s</string>
+    <string name="attendance_setup_prompt">Set up semester</string>
+    <string name="attendance_no_sessions_yet">No sessions yet</string>
+    <string name="loading_summary">Loading…</string>
+    <plurals name="attendance_below_threshold_count">
+        <item quantity="one"> · %1$d subject below target</item>
+        <item quantity="other"> · %1$d subjects below target</item>
+    </plurals>
+    <plurals name="attendance_sessions_count">
+        <item quantity="one">%1$d / %2$d Session Attended</item>
+        <item quantity="other">%1$d / %2$d Sessions Attended</item>
+    </plurals>
+    <plurals name="open_assignment_count">
+        <item quantity="one">%d open</item>
+        <item quantity="other">%d open</item>
+    </plurals>
+
+    <!-- Attendance Screen -->
+    <string-array name="departments_array">
+        <item>@string/select_dept_prompt</item>
+        <item>STME</item>
+        <item>SOC</item>
+        <item>SOL</item>
+    </string-array>
+
+    <string-array name="years_array">
+        <item>@string/select_year_prompt</item>
+        <item>Year 1</item>
+        <item>Year 2</item>
+        <item>Year 3</item>
+        <item>Year 4</item>
+        <item>Year 5</item>
+    </string-array>
+
+    <string name="label_subject">Subject</string>
+    <string name="select_subject_prompt">Select a subject</string>
+
+    <!-- Assignments Screen -->
+    <string name="heading_assignments_list">Assignments &amp; Tasks</string>
+    <string name="btn_new_assignment">+ Add Assignment</string>
+    <string name="dialog_add_assignment_title">Add New Assignment</string>
+    <string name="assignment_create_semester_first">Add a semester on the Attendance screen before adding assignments.</string>
+    <string name="assignment_subjects_empty">Add a subject to your current semester in Attendance first.</string>
+    <string name="label_assignment_title">Assignment Title</string>
+    <string name="label_due_date">Due Date</string>
+    <string name="btn_select_due_date">Select due date</string>
+    <string name="label_completed">Mark as Completed</string>
+    <string name="btn_save_assignment">Save Assignment</string>
+    <string name="empty_assignments_msg">No assignments found. Tap \'+ Add Assignment\' to create your first task.</string>
+    <string name="status_overdue">Overdue</string>
+    <string name="status_due_today">Due Today</string>
+    <string name="status_upcoming">Upcoming</string>
+    <string name="status_completed">Completed</string>
+
+    <!-- Campus Map Screen -->
+    <string name="error_opening_link">Could not open the link. Check that a browser or maps app is available.</string>
+
+    <!-- Profile Screen -->
+    <string name="heading_profile_details">Student Identity &amp; Profile</string>
+    <string name="label_student_name">Full Name</string>
+    <string name="label_roll_number">SAP ID</string>
+    <string name="label_department">Department</string>
+    <string name="label_semester">Year</string>
+    <string name="btn_edit_profile">Edit Details</string>
+    <string name="btn_save_profile">Save Changes</string>
+    <string name="profile_not_synced">No profile is available on this device for this account.</string>
+    <string name="profile_details_unavailable">Profile details are not synced</string>
+    <string name="profile_edit_hint">You can update your name and profile photo.</string>
+    <string name="profile_choose_photo">Choose from gallery</string>
+
+    <!-- Resources Screen -->
+    <string name="heading_resources_list">Campus Resources</string>
+
+
+    <!-- Campus registration labels -->
+    <string name="registration_department_label">Department</string>
+    <string name="registration_year_label">Academic Year</string>
+
+    <!-- Personal attendance -->
+    <string name="dialog_add_subject_title">Add personal subject</string>
+    <string name="subject_name_required">Subject name (required)</string>
+    <string name="subject_code_optional">Subject code (optional, e.g. CS301)</string>
+    <string name="subject_save">Save subject</string>
+    <string name="dialog_manage_period_title">Manage academic period / semester</string>
+    <string name="period_academic_year_hint">Academic year (e.g., 2026–27)</string>
+    <string name="period_semester_label_hint">Semester label (e.g., Semester 1)</string>
+    <string name="period_save">Save period</string>
+    <string name="attendance_heading">Your attendance</string>
+    <string name="attendance_add_semester">+ Semester</string>
+    <string name="attendance_add_subject">Add subject</string>
+    <string name="attendance_semester_overview">Semester overview</string>
+    <string name="attendance_no_percentage" formatted="false">--%</string>
+    <string name="attendance_zero_sessions">0 / 0 Sessions Attended</string>
+    <string name="attendance_subjects_heading">Your subjects</string>
+    <string name="attendance_empty_subjects">No subjects in this semester yet.</string>
+    <string name="attendance_no_period_selected">No period selected</string>
+    <string name="attendance_sign_in_again">Sign in again to save attendance</string>
+    <string name="attendance_add_class_hint">No classes yet</string>
+    <string name="attendance_target_unavailable">No classes yet</string>
+    <string name="attendance_below_target">Below target</string>
+    <string name="attendance_at_target">On track</string>
+    <string name="attendance_total_held">TOTAL HELD</string>
+    <string name="attendance_attended">ATTENDED</string>
+    <string name="attendance_missed">MISSED</string>
+    <string name="attendance_attend_action">Attend</string>
+    <string name="attendance_miss_action">Miss</string>
+    <string name="attendance_remove_attended_description">Remove the most recent attended class</string>
+    <string name="attendance_add_attended_description">Add an attended class</string>
+    <string name="attendance_remove_missed_description">Remove the most recent missed class</string>
+    <string name="attendance_add_missed_description">Add a missed class</string>
+    <string name="attendance_decrement" formatted="false">−</string>
+    <string name="attendance_increment" formatted="false">+</string>
+
+    <!-- Campus-specific destinations -->
+    <string name="campus_address">Plot No. 5, Education City, Opposite Botanical Gardens, Sarangpur, Chandigarh 160014</string>
+    <string name="campus_pin_title">NMIMS Chandigarh</string>
+    <string name="campus_pin_description">Pin for the NMIMS Chandigarh campus</string>
+    <string name="campus_map_api_key_missing">Add a Google Maps API key in local.properties to load the campus map.</string>
+    <string name="resources_official_documents">View official portal documents</string>
+    <string name="resources_empty">No resources yet. Add a PDF or document to keep it here.</string>
+    <string name="action_open">Open</string>
+
+    <!-- Student events -->
+    <string name="events_heading">Your events</string>
+    <string name="event_add_button">Add event</string>
+    <string name="events_empty">No events yet. Add one to keep your campus plans together.</string>
+    <string name="event_dialog_title">New event</string>
+    <string name="event_name_hint">Event name</string>
+    <string name="event_venue_hint">Venue</string>
+    <string name="event_details_hint">Details (optional)</string>
+    <string name="event_choose_date">Choose date</string>
+    <string name="event_choose_image">Add event image (optional)</string>
+    <string name="event_image_selected">Image selected</string>
+    <string name="event_image_description">Event image preview</string>
+    <string name="event_save">Save event</string>
+    <string name="event_view_details">View details</string>
+    <string name="event_meta_format">%1$s  ·  %2$s</string>
+    <string name="event_card_description">%1$s, %2$s, %3$s. View details.</string>
+    <string name="event_details_format">%1$s\n%2$s\n\n%3$s</string>
+    <string name="event_no_extra_details">No additional details.</string>
+    <string name="event_name_required">Enter an event name</string>
+    <string name="event_date_required">Choose an event date</string>
+    <string name="event_venue_required">Enter a venue</string>
+    <string name="event_save_failed">Could not save the event. Please try again.</string>
+    <string name="event_remove_title">Remove event?</string>
+    <string name="event_remove_message">Remove “%1$s” from your events?</string>
+    <string name="event_remove_failed">Could not remove the event.</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_close">Close</string>
+
+    <!-- Student-added resources -->
+    <string name="resource_add_button">Add a resource</string>
+    <string name="resource_personal_file">Your file</string>
+    <string name="resource_tap_to_open">Saved on this device. Open it or remove it from Acadia.</string>
+    <string name="resource_save_failed">Could not save this file. Check its access and try again.</string>
+    <string name="resource_fallback_title">Selected document</string>
+    <string name="resource_detail_format">%1$s\n\n%2$s</string>
+    <string name="resource_open_failed">Could not open this file. It may have been moved or removed.</string>
+    <string name="resource_remove_title">Remove resource?</string>
+    <string name="resource_remove_message">Remove “%1$s” from Acadia?</string>
+
+</resources>

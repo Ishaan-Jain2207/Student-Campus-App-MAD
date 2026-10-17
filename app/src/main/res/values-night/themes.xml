@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Keep the product light-only, even when the device uses dark mode. -->
+    <style name="Theme.Ishaan_student_app" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/accent_moss</item>
+        <item name="colorPrimaryVariant">@color/accent_moss</item>
+        <item name="colorOnPrimary">@color/surface_warm_white</item>
+
+        <item name="colorSecondary">@color/accent_persimmon</item>
+        <item name="colorSecondaryVariant">@color/accent_persimmon</item>
+        <item name="colorOnSecondary">@color/surface_warm_white</item>
+
+        <item name="android:windowBackground">@color/canvas_warm_paper</item>
+        <item name="colorSurface">@color/surface_warm_white</item>
+        <item name="colorOnSurface">@color/ink_primary</item>
+
+        <item name="android:statusBarColor">@color/canvas_warm_paper</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

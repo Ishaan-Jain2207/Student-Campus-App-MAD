@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_16">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attendance_heading"
+            android:textColor="@color/ink_primary"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold" />
+    
+        <!-- Semester Selector Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_12"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+    
+            <Spinner
+                android:id="@+id/spinner_attendance_periods"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/min_touch_target"
+                android:layout_weight="1"
+                android:background="@drawable/bg_input_field"
+                android:paddingHorizontal="@dimen/spacing_8" />
+    
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_manage_periods"
+                style="@style/Widget.CampusMate.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_8"
+                android:text="@string/attendance_add_semester" />
+        </LinearLayout>
+    
+        <!-- Management Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_8"
+            android:orientation="horizontal">
+    
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_personal_subject"
+                style="@style/Widget.CampusMate.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/attendance_add_subject"
+                app:icon="@drawable/ic_add"
+                app:iconTint="@color/accent_moss" />
+        </LinearLayout>
+    
+        <!-- Overall Attendance Estimate Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_12"
+            android:background="@drawable/bg_card_surface"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_16">
+    
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/attendance_semester_overview"
+                android:textColor="@color/text_secondary_slate"
+                android:textSize="@dimen/text_caption" />
+    
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_4"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+    
+                <TextView
+                    android:id="@+id/tv_overall_attendance_pct"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/attendance_no_percentage"
+                    android:textColor="@color/ink_primary"
+                    android:textSize="@dimen/text_display"
+                    android:textStyle="bold" />
+    
+                <TextView
+                    android:id="@+id/tv_overall_sessions_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attendance_zero_sessions"
+                    android:textColor="@color/text_secondary_slate"
+                    android:textSize="@dimen/text_body" />
+            </LinearLayout>
+        </LinearLayout>
+    
+        <!-- Enrolled Subjects Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_16"
+            android:text="@string/attendance_subjects_heading"
+            android:textColor="@color/ink_primary"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold" />
+    
+        <!-- Empty State Text -->
+        <TextView
+            android:id="@+id/tv_attendance_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_12"
+            android:background="@drawable/bg_card_surface"
+            android:padding="@dimen/spacing_16"
+            android:text="@string/attendance_empty_subjects"
+            android:textColor="@color/text_secondary_slate"
+            android:textSize="@dimen/text_body"
+            android:visibility="gone" />
+    
+        <!-- Subject Attendance List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_attendance_subjects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_8"
+            android:nestedScrollingEnabled="false" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

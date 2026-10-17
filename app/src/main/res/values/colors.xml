@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Campus Atlas Palette -->
+    <color name="canvas_warm_paper">#F7F5EF</color>
+    <color name="ink_primary">#18231F</color>
+    <color name="text_secondary_slate">#66716B</color>
+    <!-- Deep, high-contrast action colors for a light-only interface. -->
+    <color name="accent_persimmon">#A94327</color>
+    <color name="accent_moss">#365942</color>
+    <color name="accent_moss_soft">#E7EFE7</color>
+    <color name="accent_persimmon_soft">#FBECE5</color>
+    <color name="warning_amber">#8A4B08</color>
+    <color name="warning_amber_soft">#FAF1D8</color>
+    <color name="surface_warm_white">#FFFEFA</color>
+    <color name="border_subtle_grey">#DDDCD3</color>
+</resources>

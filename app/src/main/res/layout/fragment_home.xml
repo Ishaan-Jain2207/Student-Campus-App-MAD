@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_16">
+
+        <TextView
+            android:id="@+id/tv_home_greeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_student"
+            android:textColor="@color/text_secondary_slate"
+            android:textSize="@dimen/text_subtitle" />
+
+        <TextView
+            android:id="@+id/tv_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_4"
+            android:text="@string/heading_daily_briefing"
+            android:textColor="@color/ink_primary"
+            android:textSize="@dimen/text_display"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_20"
+            android:text="@string/heading_next_up"
+            android:textColor="@color/ink_primary"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_8"
+            android:background="@drawable/bg_card_surface"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_16">
+
+            <TextView
+                android:id="@+id/tv_home_next_up_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink_primary"
+                android:textSize="@dimen/text_subtitle"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_home_next_up_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_4"
+                android:textColor="@color/accent_persimmon"
+                android:textSize="@dimen/text_body"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_home_next_up_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_upcoming_task_msg"
+                android:textColor="@color/text_secondary_slate"
+                android:textSize="@dimen/text_body" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_20"
+            android:text="@string/heading_academic_summary"
+            android:textColor="@color/ink_primary"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_8"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:id="@+id/card_home_attendance_summary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_8"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card_surface"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:minHeight="@dimen/min_touch_target"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_16">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/summary_attendance_recorded"
+                    android:textColor="@color/text_secondary_slate"
+                    android:textSize="@dimen/text_caption" />
+
+                <TextView
+                    android:id="@+id/tv_home_attendance_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_8"
+                    android:text="@string/loading_summary"
+                    android:textColor="@color/ink_primary"
+                    android:textSize="@dimen/text_title"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/card_home_assignments_summary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_8"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card_surface"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:minHeight="@dimen/min_touch_target"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_16">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/summary_assignments_open"
+                    android:textColor="@color/text_secondary_slate"
+                    android:textSize="@dimen/text_caption" />
+
+                <TextView
+                    android:id="@+id/tv_home_assignments_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_8"
+                    android:text="@string/loading_summary"
+                    android:textColor="@color/ink_primary"
+                    android:textSize="@dimen/text_title"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_home_events"
+            style="@style/Widget.CampusMate.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_12"
+            android:text="@string/home_events_action"
+            app:icon="@drawable/ic_event"
+            app:iconTint="@color/accent_moss" />
+
+    </LinearLayout>
+</ScrollView>

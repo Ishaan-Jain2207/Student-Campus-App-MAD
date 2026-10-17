@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_20">
+
+    <TextView
+        android:id="@+id/tv_dialog_subject_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_add_subject_title"
+        android:textColor="@color/ink_primary"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold" />
+
+    <!-- Subject Name -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.CampusMate.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_16"
+        android:hint="@string/subject_name_required">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_subject_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:textColor="@color/ink_primary" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Subject Code -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.CampusMate.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_12"
+        android:hint="@string/subject_code_optional">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_subject_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapCharacters"
+            android:maxLines="1"
+            android:textColor="@color/ink_primary" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_subject_cancel"
+            style="@style/Widget.CampusMate.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_8"
+            android:text="@string/action_cancel" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_subject_save"
+            style="@style/Widget.CampusMate.Button.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subject_save" />
+    </LinearLayout>
+
+</LinearLayout>

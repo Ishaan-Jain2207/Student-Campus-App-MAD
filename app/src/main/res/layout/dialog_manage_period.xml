@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_20">
+
+    <TextView
+        android:id="@+id/tv_dialog_period_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_manage_period_title"
+        android:textColor="@color/ink_primary"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold" />
+
+    <!-- Academic Year -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.CampusMate.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_16"
+        android:hint="@string/period_academic_year_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_period_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/ink_primary" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Semester Label -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.CampusMate.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_12"
+        android:hint="@string/period_semester_label_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_period_semester"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/ink_primary" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_period_cancel"
+            style="@style/Widget.CampusMate.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_8"
+            android:text="@string/action_cancel" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_period_save"
+            style="@style/Widget.CampusMate.Button.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/period_save" />
+    </LinearLayout>
+
+</LinearLayout>

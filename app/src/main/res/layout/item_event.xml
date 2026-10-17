@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_12"
+    android:background="@drawable/bg_card_surface"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_12">
+
+    <ImageView
+        android:id="@+id/img_event"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/canvas_warm_paper"
+        android:contentDescription="@string/event_image_description"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_logo" />
+
+    <TextView
+        android:id="@+id/tv_event_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_12"
+        android:textColor="@color/ink_primary"
+        android:textSize="@dimen/text_subtitle"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_event_meta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_4"
+        android:textColor="@color/text_secondary_slate"
+        android:textSize="@dimen/text_body" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_event_details"
+        style="@style/Widget.CampusMate.Button.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_8"
+        android:text="@string/event_view_details" />
+</LinearLayout>

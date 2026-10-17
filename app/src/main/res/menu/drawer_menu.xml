@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/drawer_map"
+        android:icon="@drawable/ic_map"
+        android:title="@string/title_map" />
+    <item
+        android:id="@+id/drawer_resources"
+        android:icon="@drawable/ic_resources"
+        android:title="@string/title_resources" />
+    <item android:title="@string/section_account">
+        <menu>
+            <item
+                android:id="@+id/drawer_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/title_logout" />
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_12"
+    android:background="@drawable/bg_card_surface"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_16">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_subject_name_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/ink_primary"
+            android:textSize="@dimen/text_subtitle"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_subject_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_8"
+            android:background="@drawable/bg_chip"
+            android:paddingHorizontal="@dimen/spacing_8"
+            android:paddingVertical="@dimen/spacing_4"
+            android:textColor="@color/accent_moss"
+            android:textSize="@dimen/text_subtitle"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_subject_attendance"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="@dimen/spacing_12"
+        android:max="100"
+        android:minHeight="6dp"
+        android:progressBackgroundTint="@color/border_subtle_grey"
+        android:progressTint="@color/accent_moss" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_12"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/attendance_total_held"
+                android:textColor="@color/text_secondary_slate"
+                android:textSize="@dimen/text_caption"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_subject_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_4"
+                android:textColor="@color/ink_primary"
+                android:textSize="@dimen/text_subtitle"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="42dp"
+            android:background="@color/border_subtle_grey" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/attendance_attended"
+                android:textColor="@color/text_secondary_slate"
+                android:textSize="@dimen/text_caption"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_subject_attended"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_4"
+                android:textColor="@color/accent_moss"
+                android:textSize="@dimen/text_subtitle"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="42dp"
+            android:background="@color/border_subtle_grey" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/attendance_missed"
+                android:textColor="@color/text_secondary_slate"
+                android:textSize="@dimen/text_caption"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_subject_missed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_4"
+                android:textColor="@color/accent_persimmon"
+                android:textSize="@dimen/text_subtitle"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_subject_threshold_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_12"
+        android:background="@drawable/bg_chip"
+        android:paddingHorizontal="@dimen/spacing_12"
+        android:paddingVertical="@dimen/spacing_8"
+        android:textSize="@dimen/text_caption"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_12"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_8"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/spacing_4"
+                android:text="@string/attendance_attend_action"
+                android:textColor="@color/text_secondary_slate"
+                android:textSize="@dimen/text_caption" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_attend_controls"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_attend_decrease"
+                    style="@style/Widget.CampusMate.Button.Icon"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/attendance_remove_attended_description"
+                    android:text="@string/attendance_decrement"
+                    android:textColor="@color/accent_moss"
+                    app:backgroundTint="@android:color/transparent"
+                    app:rippleColor="@color/accent_moss_soft" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:background="@color/border_subtle_grey" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_attend_increase"
+                    style="@style/Widget.CampusMate.Button.Icon"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/attendance_add_attended_description"
+                    android:text="@string/attendance_increment"
+                    android:textColor="@color/accent_moss"
+                    app:backgroundTint="@android:color/transparent"
+                    app:rippleColor="@color/accent_moss_soft" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_8"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/spacing_4"
+                android:text="@string/attendance_miss_action"
+                android:textColor="@color/text_secondary_slate"
+                android:textSize="@dimen/text_caption" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_miss_controls"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_miss_decrease"
+                    style="@style/Widget.CampusMate.Button.Icon"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/attendance_remove_missed_description"
+                    android:text="@string/attendance_decrement"
+                    android:textColor="@color/accent_persimmon"
+                    app:backgroundTint="@android:color/transparent"
+                    app:rippleColor="@color/accent_persimmon_soft" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:background="@color/border_subtle_grey" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_miss_increase"
+                    style="@style/Widget.CampusMate.Button.Icon"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/attendance_add_missed_description"
+                    android:text="@string/attendance_increment"
+                    android:textColor="@color/accent_persimmon"
+                    app:backgroundTint="@android:color/transparent"
+                    app:rippleColor="@color/accent_persimmon_soft" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

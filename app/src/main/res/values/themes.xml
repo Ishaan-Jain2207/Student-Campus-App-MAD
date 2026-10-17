@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Ishaan_student_app" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand colors -->
+        <item name="colorPrimary">@color/accent_moss</item>
+        <item name="colorPrimaryVariant">@color/accent_moss</item>
+        <item name="colorOnPrimary">@color/surface_warm_white</item>
+
+        <!-- Secondary brand colors -->
+        <item name="colorSecondary">@color/accent_persimmon</item>
+        <item name="colorSecondaryVariant">@color/accent_persimmon</item>
+        <item name="colorOnSecondary">@color/surface_warm_white</item>
+
+        <!-- Background & Surface -->
+        <item name="android:windowBackground">@color/canvas_warm_paper</item>
+        <item name="colorSurface">@color/surface_warm_white</item>
+        <item name="colorOnSurface">@color/ink_primary</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/canvas_warm_paper</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!-- Custom Button Styles -->
+    <style name="Widget.CampusMate.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/accent_moss</item>
+        <item name="android:textColor">@color/surface_warm_white</item>
+        <item name="android:paddingTop">@dimen/spacing_12</item>
+        <item name="android:paddingBottom">@dimen/spacing_12</item>
+        <item name="android:minHeight">@dimen/min_touch_target</item>
+        <item name="cornerRadius">@dimen/corner_radius_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.CampusMate.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/accent_moss</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textColor">@color/accent_moss</item>
+        <item name="android:paddingTop">@dimen/spacing_12</item>
+        <item name="android:paddingBottom">@dimen/spacing_12</item>
+        <item name="android:minHeight">@dimen/min_touch_target</item>
+        <item name="cornerRadius">@dimen/corner_radius_medium</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Widget.CampusMate.Button.Icon" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:minWidth">@dimen/min_touch_target</item>
+        <item name="android:minHeight">@dimen/min_touch_target</item>
+        <item name="android:textColor">@color/ink_primary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Custom EditText / TextInputLayout Style -->
+    <style name="Widget.CampusMate.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/border_subtle_grey</item>
+        <item name="boxStrokeWidth">1dp</item>
+
+        <item name="hintTextColor">@color/text_secondary_slate</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_small</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_small</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_small</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_small</item>
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="Widget.CampusMate.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">@color/ink_primary</item>
+        <item name="subtitleTextColor">@color/text_secondary_slate</item>
+        <item name="android:background">@color/surface_warm_white</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+</resources>
