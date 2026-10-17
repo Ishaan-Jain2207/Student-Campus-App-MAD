@@ -92,17 +92,29 @@ public class AttendanceFragment extends Fragment {
     }
 
     private void setupRecyclerView() {
-        adapter = new SubjectAttendanceAdapter(subjectsList, new SubjectAttendanceAdapter.SessionActionListener() {
-            @Override
-            public void onAddSession(SubjectAttendanceSummary subject, boolean attended) {
-                addQuickSession(subject, attended);
-            }
+        adapter = new SubjectAttendanceAdapter(subjectsList,
+                new SubjectAttendanceAdapter.SessionActionListener() {
+                    @Override
+                    public void onAddSession(SubjectAttendanceSummary subject, boolean attended) {
+                        addQuickSession(subject, attended);
+                    }
 
-            @Override
-            public void onRemoveSession(SubjectAttendanceSummary subject, boolean attended) {
-                confirmRemoveLatestSession(subject, attended);
-            }
-        });
+                    @Override
+                    public void onRemoveSession(SubjectAttendanceSummary subject, boolean attended) {
+                        confirmRemoveLatestSession(subject, attended);
+                    }
+                },
+                new SubjectAttendanceAdapter.SubjectManageListener() {
+                    @Override
+                    public void onEditSubject(SubjectAttendanceSummary subject) {
+                        showEditSubjectDialog(subject);
+                    }
+
+                    @Override
+                    public void onDeleteSubject(SubjectAttendanceSummary subject) {
+                        confirmDeleteSubject(subject);
+                    }
+                });
         rvSubjects.setLayoutManager(new LinearLayoutManager(requireContext()));
         rvSubjects.setAdapter(adapter);
     }
@@ -425,6 +437,100 @@ public class AttendanceFragment extends Fragment {
         });
 
         alertDialog.show();
+    }
+
+    private void showEditSubjectDialog(SubjectAttendanceSummary subject) {
+        if (subject == null || selectedPeriod == null) return;
+        long subjectId;
+        try {
+            subjectId = Long.parseLong(subject.getSubjectId());
+        } catch (NumberFormatException e) {
+            return;
+        }
+
+        View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_personal_subject, null);
+
+        TextView tvTitle = dialogView.findViewById(R.id.tv_dialog_subject_title);
+        EditText etName = dialogView.findViewById(R.id.et_subject_name);
+        EditText etCode = dialogView.findViewById(R.id.et_subject_code);
+        Button btnCancel = dialogView.findViewById(R.id.btn_subject_cancel);
+        Button btnSave = dialogView.findViewById(R.id.btn_subject_save);
+
+        if (tvTitle != null) {
+            tvTitle.setText("Edit Subject");
+        }
+        etName.setText(subject.getSubjectName());
+        etCode.setText(subject.getSubjectCode());
+
+        AlertDialog alertDialog = new AlertDialog.Builder(requireContext())
+                .setView(dialogView)
+                .create();
+
+        btnCancel.setOnClickListener(v -> alertDialog.dismiss());
+
+        btnSave.setOnClickListener(v -> {
+            String name = etName.getText().toString().trim();
+            String faculty = etCode.getText().toString().trim();
+
+            if (name.isEmpty()) {
+                etName.setError("Subject name required");
+                return;
+            }
+
+            String sapId = sessionManager.getSapId();
+            PersonalSubject updatedSubject = new PersonalSubject(subjectId, sapId, selectedPeriod.getId(), name, faculty, false, 0, 0);
+
+            btnSave.setEnabled(false);
+
+            AppExecutors.getInstance().diskIO().execute(() -> {
+                long result = personalSubjectRepository.saveOrUpdateSubject(updatedSubject);
+                AppExecutors.getInstance().mainThread().execute(() -> {
+                    if (!isAdded()) return;
+                    btnSave.setEnabled(true);
+                    if (result > 0) {
+                        Toast.makeText(requireContext(), "Subject updated", Toast.LENGTH_SHORT).show();
+                        alertDialog.dismiss();
+                        loadAttendanceForSelectedPeriod();
+                    } else {
+                        Toast.makeText(requireContext(), "Failed to update subject", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            });
+        });
+
+        alertDialog.show();
+    }
+
+    private void confirmDeleteSubject(SubjectAttendanceSummary subject) {
+        if (subject == null) return;
+        long subjectId;
+        try {
+            subjectId = Long.parseLong(subject.getSubjectId());
+        } catch (NumberFormatException e) {
+            return;
+        }
+
+        String sapId = sessionManager.getSapId();
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Delete Subject")
+                .setMessage("Delete subject '" + subject.getSubjectName() + "'? This will also remove all class attendance entries logged for this subject.")
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Delete", (dialog, which) -> {
+                    AppExecutors.getInstance().diskIO().execute(() -> {
+                        boolean deleted = personalSubjectRepository.deleteSubject(sapId, subjectId);
+                        AppExecutors.getInstance().mainThread().execute(() -> {
+                            if (!isAdded()) return;
+                            if (deleted) {
+                                Toast.makeText(requireContext(), "Subject deleted", Toast.LENGTH_SHORT).show();
+                                loadAttendanceForSelectedPeriod();
+                            } else {
+                                Toast.makeText(requireContext(), "Failed to delete subject", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    });
+                })
+                .show();
     }
 
 }

@@ -26,12 +26,12 @@
             android:id="@+id/et_subject_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textCapWords"
             android:maxLines="1"
             android:textColor="@color/ink_primary" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Subject Code -->
+    <!-- Faculty Name -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.CampusMate.TextInputLayout"
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:id="@+id/et_subject_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapCharacters"
+            android:inputType="textPersonName|textCapWords"
             android:maxLines="1"
             android:textColor="@color/ink_primary" />
     </com.google.android.material.textfield.TextInputLayout>

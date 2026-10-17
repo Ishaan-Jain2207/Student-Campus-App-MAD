@@ -25,6 +25,17 @@
             android:textSize="@dimen/text_subtitle"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/btn_delete_subject"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="@dimen/spacing_4"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Delete Subject"
+            android:padding="6dp"
+            android:src="@drawable/ic_logout"
+            app:tint="@color/accent_persimmon" />
+
         <TextView
             android:id="@+id/tv_subject_percentage"
             android:layout_width="wrap_content"

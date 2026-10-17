@@ -154,8 +154,8 @@
 
     <!-- Personal attendance -->
     <string name="dialog_add_subject_title">Add personal subject</string>
-    <string name="subject_name_required">Subject name (required)</string>
-    <string name="subject_code_optional">Subject code (optional, e.g. CS301)</string>
+    <string name="subject_name_required">Subject Name</string>
+    <string name="subject_code_optional">Faculty Name</string>
     <string name="subject_save">Save subject</string>
     <string name="dialog_manage_period_title">Manage academic period / semester</string>
     <string name="period_academic_year_hint">Academic year (e.g., 2026–27)</string>

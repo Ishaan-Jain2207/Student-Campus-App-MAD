@@ -1,5 +1,6 @@
 package com.example.ishaan_student_app.ui.profile;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -15,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,8 +53,8 @@ public class ProfileFragment extends Fragment {
     private String selectedPhotoUri = "";
     private boolean isEditing = false;
 
-    private final ActivityResultLauncher<PickVisualMediaRequest> photoPickerLauncher =
-            registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
+    private final ActivityResultLauncher<String> photoPickerLauncher =
+            registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
                 if (uri != null) {
                     AppExecutors.getInstance().diskIO().execute(() -> {
                         String localFilePath = savePhotoToInternalStorage(uri);
@@ -62,8 +62,12 @@ public class ProfileFragment extends Fragment {
                             if (!isAdded()) {
                                 return;
                             }
-                            selectedPhotoUri = localFilePath;
-                            displayAvatarImage(selectedPhotoUri);
+                            if (!localFilePath.isEmpty()) {
+                                selectedPhotoUri = localFilePath;
+                                displayAvatarImage(selectedPhotoUri);
+                            } else {
+                                Toast.makeText(requireContext(), "Unable to process selected photo.", Toast.LENGTH_SHORT).show();
+                            }
                         });
                     });
                 }
@@ -115,8 +119,12 @@ public class ProfileFragment extends Fragment {
     }
 
     private void launchPhotoPicker() {
-        photoPickerLauncher.launch(new PickVisualMediaRequest.Builder()
-                .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE).build());
+        try {
+            photoPickerLauncher.launch("image/*");
+        } catch (Exception e) {
+            Log.e(TAG, "Error launching photo picker", e);
+            Toast.makeText(requireContext(), "Unable to open gallery.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void loadStudentProfile() {
@@ -220,41 +228,58 @@ public class ProfileFragment extends Fragment {
 
     private String savePhotoToInternalStorage(Uri uri) {
         try {
-            InputStream inputStream = requireContext().getContentResolver().openInputStream(uri);
-            if (inputStream == null) {
+            Context context = getContext();
+            if (context == null) {
                 return "";
             }
-            File dir = new File(requireContext().getFilesDir(), "profile_photos");
+
+            File dir = new File(context.getFilesDir(), "profile_photos");
             if (!dir.exists()) {
                 dir.mkdirs();
             }
+
             String sapId = sessionManager.getSapId().isEmpty() ? "user" : sessionManager.getSapId();
             File file = new File(dir, "avatar_" + sapId + ".jpg");
-            FileOutputStream outputStream = new FileOutputStream(file);
-            byte[] buffer = new byte[1024 * 4];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
+
+            // Single pass stream copy
+            try (InputStream inputStream = context.getContentResolver().openInputStream(uri);
+                 FileOutputStream outputStream = new FileOutputStream(file)) {
+                if (inputStream == null) {
+                    return "";
+                }
+                byte[] buffer = new byte[8192];
+                int bytesRead;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+                outputStream.flush();
             }
-            outputStream.flush();
-            outputStream.close();
-            inputStream.close();
+
+            if (!file.exists() || file.length() == 0) {
+                return "";
+            }
+
             return Uri.fromFile(file).toString();
         } catch (Exception e) {
             Log.e(TAG, "Error saving avatar photo to internal storage", e);
-            return uri.toString();
+            return "";
         }
     }
 
     private void displayAvatarImage(String uriString) {
-        imgAvatar.setImageURI(null); // Force clear previous URI cache in ImageView
+        if (imgAvatar == null) {
+            return;
+        }
+        imgAvatar.setImageDrawable(null); // Force clear previous image cache in ImageView
         if (uriString != null && !uriString.trim().isEmpty()) {
             try {
                 Uri uri = Uri.parse(uriString.trim());
                 if ("file".equalsIgnoreCase(uri.getScheme()) && uri.getPath() != null) {
                     File file = new File(uri.getPath());
                     if (file.exists() && file.length() > 0) {
-                        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                        BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = 2; // Fast downsampling
+                        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
                         if (bitmap != null) {
                             imgAvatar.setImageBitmap(bitmap);
                             return;

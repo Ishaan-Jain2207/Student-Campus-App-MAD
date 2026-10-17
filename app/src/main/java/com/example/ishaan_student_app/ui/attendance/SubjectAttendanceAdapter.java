@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -25,12 +26,21 @@ public class SubjectAttendanceAdapter extends RecyclerView.Adapter<SubjectAttend
         void onRemoveSession(SubjectAttendanceSummary subject, boolean attended);
     }
 
+    public interface SubjectManageListener {
+        void onEditSubject(SubjectAttendanceSummary subject);
+        void onDeleteSubject(SubjectAttendanceSummary subject);
+    }
+
     private final List<SubjectAttendanceSummary> subjectsList;
     private final SessionActionListener actionListener;
+    private final SubjectManageListener manageListener;
 
-    public SubjectAttendanceAdapter(List<SubjectAttendanceSummary> subjectsList, SessionActionListener actionListener) {
+    public SubjectAttendanceAdapter(List<SubjectAttendanceSummary> subjectsList,
+                                    SessionActionListener actionListener,
+                                    SubjectManageListener manageListener) {
         this.subjectsList = subjectsList;
         this.actionListener = actionListener;
+        this.manageListener = manageListener;
     }
 
     @NonNull
@@ -43,7 +53,7 @@ public class SubjectAttendanceAdapter extends RecyclerView.Adapter<SubjectAttend
     @Override
     public void onBindViewHolder(@NonNull SubjectViewHolder holder, int position) {
         SubjectAttendanceSummary subject = subjectsList.get(position);
-        holder.bind(subject, actionListener);
+        holder.bind(subject, actionListener, manageListener);
     }
 
     @Override
@@ -64,6 +74,7 @@ public class SubjectAttendanceAdapter extends RecyclerView.Adapter<SubjectAttend
         private final Button btnAttendIncrease;
         private final Button btnMissDecrease;
         private final Button btnMissIncrease;
+        private final ImageView btnDeleteSubject;
 
         public SubjectViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,13 +89,18 @@ public class SubjectAttendanceAdapter extends RecyclerView.Adapter<SubjectAttend
             btnAttendIncrease = itemView.findViewById(R.id.btn_attend_increase);
             btnMissDecrease = itemView.findViewById(R.id.btn_miss_decrease);
             btnMissIncrease = itemView.findViewById(R.id.btn_miss_increase);
+            btnDeleteSubject = itemView.findViewById(R.id.btn_delete_subject);
         }
 
-        public void bind(SubjectAttendanceSummary subject, SessionActionListener actionListener) {
+        public void bind(SubjectAttendanceSummary subject,
+                         SessionActionListener actionListener,
+                         SubjectManageListener manageListener) {
             Context context = itemView.getContext();
 
-            String codeStr = subject.getSubjectCode() != null && !subject.getSubjectCode().isEmpty() ? " (" + subject.getSubjectCode() + ")" : "";
-            String titleStr = subject.getSubjectName() + codeStr;
+            String facultyStr = subject.getSubjectCode() != null && !subject.getSubjectCode().trim().isEmpty()
+                    ? " • " + subject.getSubjectCode().trim()
+                    : "";
+            String titleStr = subject.getSubjectName() + facultyStr;
             tvNameCode.setText(titleStr);
 
             int attended = subject.getTotalAttendedSessions();
@@ -108,6 +124,22 @@ public class SubjectAttendanceAdapter extends RecyclerView.Adapter<SubjectAttend
                 btnAttendDecrease.setOnClickListener(null);
                 btnMissDecrease.setOnClickListener(null);
             }
+
+            if (btnDeleteSubject != null) {
+                btnDeleteSubject.setOnClickListener(v -> {
+                    if (manageListener != null) {
+                        manageListener.onDeleteSubject(subject);
+                    }
+                });
+            }
+
+            itemView.setOnLongClickListener(v -> {
+                if (manageListener != null) {
+                    manageListener.onEditSubject(subject);
+                    return true;
+                }
+                return false;
+            });
 
             if (subject.getTotalConductedSessions() <= 0) {
                 tvPercentage.setText(R.string.attendance_no_percentage);

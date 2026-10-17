@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/spacing_16">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SVKM\'s NMIMS Campuses Map"
+        android:textColor="@color/ink_primary"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold" />
+
+    <!-- Campus Selector Spinner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_8"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner_campus_select"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/min_touch_target"
+            android:background="@drawable/bg_input_field"
+            android:paddingHorizontal="@dimen/spacing_8" />
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/map_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_12"
         android:layout_weight="1"
         android:background="@color/border_subtle_grey"
         android:minHeight="240dp">
@@ -25,43 +51,57 @@
             android:textSize="@dimen/text_body" />
     </FrameLayout>
 
+    <!-- Selected Campus Card -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_16"
+        android:layout_marginTop="@dimen/spacing_12"
         android:background="@drawable/bg_card_surface"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="@dimen/spacing_16">
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:contentDescription="@string/campus_pin_description"
-            android:src="@drawable/ic_location" />
-
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_12"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/campus_pin_description"
+                android:src="@drawable/ic_location" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/tv_selected_campus_name"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/campus_pin_title"
+                android:layout_marginStart="@dimen/spacing_8"
+                android:layout_weight="1"
+                android:text="NMIMS Chandigarh"
                 android:textColor="@color/ink_primary"
                 android:textSize="@dimen/text_subtitle"
                 android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_4"
-                android:text="@string/campus_address"
-                android:textColor="@color/text_secondary_slate"
-                android:textSize="@dimen/text_caption" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_selected_campus_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_4"
+            android:text="Plot No. 5, Education City, Sarangpur, Chandigarh"
+            android:textColor="@color/text_secondary_slate"
+            android:textSize="@dimen/text_caption" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_campus_directions"
+            style="@style/Widget.CampusMate.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_12"
+            android:text="Get Directions in Google Maps"
+            app:icon="@drawable/ic_location"
+            app:iconTint="@color/accent_moss" />
     </LinearLayout>
 </LinearLayout>
