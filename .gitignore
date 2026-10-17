@@ -13,3 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Ignore Markdown prompt and documentation files
+*.md
+!README.md
+docs/
