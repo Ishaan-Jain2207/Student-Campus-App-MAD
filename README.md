@@ -13,7 +13,7 @@ Acadia is a native Android application designed for students of **SVKM's NMIMS C
 
 ### 2. Personal Attendance Tracker & Semester Management
 * **Academic Period Management:** Create, select, and switch between academic semesters (`academic_periods`).
-* **Subject-Wise Logging:** Add personal subjects per semester and record class attendance entries with status (`PRESENT`, `ABSENT`, `CANCELLED`).
+* **Subject-Wise Logging:** Add personal subjects per semester and record class attendance entries.
 * **Faculty Name Support:** Optional faculty name tracking for each personal subject.
 * **Advisory Department Benchmarks:** Automatically calculates attendance percentages excluding `CANCELLED` classes and evaluates advisory benchmarks based on department (`STME`: 80%, `SOC`: 80%, `SOL`: 70%).
 * **Clear Personal Disclaimer:** Prominently states that logged entries are personal student records and not official university records.
